@@ -1,0 +1,155 @@
+Task 1: Create IAM Users with Role-Based Access
+🎯 Scenario
+
+Company has:
+
+Admin
+Developer
+Read-only user
+🛠️ Steps
+Go to IAM → Users → Create User
+Create users:
+admin-user
+dev-user
+viewer-user
+Assign permissions:
+Admin → AdministratorAccess
+Dev → AmazonEC2FullAccess
+Viewer → ReadOnlyAccess
+📚 What You Learn
+Role-based access control (RBAC)
+Least privilege principle
+🚀 Task 2: Create IAM Group & Attach Policies
+🎯 Scenario
+
+Instead of assigning permissions individually → use groups
+
+🛠️ Steps
+Go to IAM → Groups
+Create:
+Admins
+Developers
+Attach policies:
+Admins → AdministratorAccess
+Developers → AmazonEC2FullAccess
+Add users into groups
+📚 Learn
+Centralized permission management
+Scalable access control
+🚀 Task 3: Create Custom Policy (Very Important 💥)
+🎯 Scenario
+
+Developer should:
+
+Start/Stop EC2
+NOT delete instances
+🛠️ Policy JSON
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:StartInstances",
+        "ec2:StopInstances",
+        "ec2:DescribeInstances"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+Steps
+IAM → Policies → Create Policy
+Paste JSON
+Attach to Developer group
+📚 Learn
+Fine-grained permissions
+Real enterprise control
+🚀 Task 4: IAM Role for EC2 (MOST IMPORTANT ⭐)
+🎯 Scenario
+
+EC2 needs access to S3 (without storing credentials)
+
+🛠️ Steps
+IAM → Roles → Create Role
+Select:
+AWS Service → EC2
+Attach policy:
+AmazonS3ReadOnlyAccess
+Attach role to EC2 instance
+📚 Learn
+Secure service-to-service access
+No hardcoded credentials
+🚀 Task 5: Enable MFA (Multi-Factor Authentication)
+🎯 Scenario
+
+Secure admin account
+
+🛠️ Steps
+IAM → Users → Select user
+Security Credentials → Assign MFA
+Use:
+Google Authenticator
+📚 Learn
+Strong authentication
+Enterprise security standard
+🚀 Task 6: Password Policy Setup
+🎯 Scenario
+
+Company wants strong passwords
+
+🛠️ Steps
+IAM → Account Settings
+Set:
+Min 8/12 characters
+Require numbers, symbols
+Password expiration
+📚 Learn
+Organization-wide security
+🚀 Task 7: IAM Access Analyzer
+🎯 Scenario
+
+Find public or risky access
+
+🛠️ Steps
+IAM → Access Analyzer
+Enable analyzer
+Check findings
+📚 Learn
+Security auditing
+Detect misconfigurations
+🚀 Task 8: Create Cross-Account Role
+🎯 Scenario
+
+Company A wants access to Company B AWS
+
+🛠️ Steps
+Create role
+Add trusted account ID
+Attach policy
+📚 Learn
+Multi-account architecture
+Enterprise setups
+🚀 Task 9: IAM Policy Simulator
+🎯 Scenario
+
+Test permissions before applying
+
+🛠️ Steps
+IAM → Policy Simulator
+Select user
+Test actions (e.g., EC2 start)
+📚 Learn
+Debugging access issues
+🚀 Task 10: Create Billing Access Control
+🎯 Scenario
+
+Only finance team can see billing
+
+🛠️ Steps
+Enable billing access
+Create policy:
+BillingReadOnly
+Assign to finance user
+📚 Learn
+Cost security
