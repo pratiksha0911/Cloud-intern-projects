@@ -2,7 +2,7 @@
 
 
 ## 📌 Overview
-This project demonstrates a real-world cloud architecture using <AWS/Azure/GCP>. It focuses on solving <problem statement> using scalable, secure, and highly available cloud services.
+This project demonstrates a real-world cloud architecture using <AWS/Azure>. It focuses on solving <problem statement> using scalable, secure, and highly available cloud services.
 
 ---
 
@@ -41,7 +41,7 @@ This project demonstrates a real-world cloud architecture using <AWS/Azure/GCP>.
 - Configured security groups
 
 ### 3. Database Setup
-- Created RDS instance (MySQL/PostgreSQL)
+- Created RDS instance (PostgreSQL)
 - Enabled private access
 
 ### 4. Load Balancing
